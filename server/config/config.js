@@ -1,5 +1,5 @@
 /**
- * PUERTo
+ * PUERTO
  */
 
 process.env.PORT = process.env.PORT || 3000;
@@ -7,7 +7,7 @@ process.env.PORT = process.env.PORT || 3000;
 
 
 /**
- * Entorno
+ * ENTORNO
  */
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
@@ -16,5 +16,16 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
  * Base de datos
  */
 
-process.env.urlDB = process.env.NODE_ENV === 'dev' ? 'mongodb://localhost:27017/cafe' : process.env.MONGO_URI 
-// process.env.urlDB =  'mongodb+srv://admin:Mwob7Hr5MORNy9xE@cluster0-iyttj.mongodb.net/cafe'
+process.env.urlDB = process.env.NODE_ENV === 'dev' ? 'mongodb://localhost:27017/cafe' : process.env.MONGO_URI
+
+/**
+ * Vencimiento del token
+ */
+
+process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30
+
+/**
+* SEED de autenticacion
+*/
+
+process.env.SEED = process.env.SEED || 'este-es-el-seed-desarrollo';

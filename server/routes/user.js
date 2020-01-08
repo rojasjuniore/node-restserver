@@ -3,8 +3,9 @@ const app = express()
 const bcrypt = require('bcrypt');
 const _ = require('underscore')
 const User = require('../models/user')
+const verificarToken = { verificaToken, verificaRole } = require('../middlewares/auth')
 
-app.post('/users', (req, res) => {
+app.post('/users', [verificaToken, verificaRole], (req, res) => {
 
     let body = req.body
 
@@ -34,7 +35,7 @@ app.post('/users', (req, res) => {
 })
 
 
-app.put('/user/:id', (req, res) => {
+app.put('/user/:id', [verificaToken, verificaRole], (req, res) => {
     let id = req.params.id
     let body = _.pick(req.body, ['name', 'email', 'img', 'rol', 'status'])
 
@@ -57,7 +58,7 @@ app.put('/user/:id', (req, res) => {
 })
 
 
-app.get('/users', (req, res) => {
+app.get('/users', [verificaToken, verificaRole], (req, res) => {
 
     let desde = Number(req.query.desde) || 0
     let limit = Number(req.query.limit) || 5
@@ -75,6 +76,7 @@ app.get('/users', (req, res) => {
 
             User.count({ status: true }, (err, count) => {
                 res.json({
+                    user: req.user,
                     status: true,
                     count: count,
                     users: users
@@ -85,7 +87,7 @@ app.get('/users', (req, res) => {
 })
 
 
-app.delete('/users/:id', (req, res) => {
+app.delete('/users/:id', [verificaToken, verificaRole], (req, res) => {
     let id = req.params.id
 
     // User.findByIdAndRemove(id, (err, userRemove) => {
