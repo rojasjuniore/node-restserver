@@ -34,7 +34,7 @@ let userSchema = new Schema({
     },
     rol: {
         type: String,
-        default: "USER_ROL",
+        default: "USER_ROLE",
         enum: rolesValidos
     },
     status: {

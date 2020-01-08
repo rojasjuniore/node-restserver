@@ -1,10 +1,11 @@
 require('./config/config')
-const colors = require('colors');
 const express = require('express')
 const mongoose = require('mongoose');
+const path = require('path')
 
 const app = express()
 const bodyParser = require('body-parser')
+const colors = require('colors');
 
 
 // parse application/x-www-form-urlencoded
@@ -12,6 +13,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+// Habilitar Carpeta Public
+app.use(express.static(path.resolve(__dirname, '../public')))
 
 // Configuracion Global de ruta
 app.use(require('./routes/index'))
