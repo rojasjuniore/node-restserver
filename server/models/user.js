@@ -58,4 +58,4 @@ userSchema.methods.toJSON = function () {
     return userObj
 }
 userSchema.plugin(uniqueValidator);
-module.exports = mongoose.model('user', userSchema)
+module.exports = mongoose.model('users', userSchema)

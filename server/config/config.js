@@ -22,7 +22,7 @@ process.env.urlDB = process.env.NODE_ENV === 'dev' ? 'mongodb://localhost:27017/
  * Vencimiento del token
  */
 
-process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30
+process.env.CADUCIDAD_TOKEN = '48h'
 
 /**
 * SEED de autenticacion
