@@ -2,16 +2,17 @@ require('./config/config')
 const express = require('express')
 const mongoose = require('mongoose');
 const path = require('path')
+const bodyParser = require('body-parser')
+const colors = require('colors')
 
 const app = express()
-const bodyParser = require('body-parser')
-const colors = require('colors');
 
 
-// parse application/x-www-form-urlencoded
+
+// Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// parse application/json
+// Parse application/json
 app.use(bodyParser.json())
 
 // Habilitar Carpeta Public
